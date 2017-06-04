@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+int h;
+
 string printSymbol(char s, int n) {
 	int i = 0;
 	string line = "";
@@ -12,14 +14,36 @@ string printSymbol(char s, int n) {
 	return line;
 }
 
+string printSymbol2(char s1, char s2, int n) {
+	string line = "";
+
+	cout << printSymbol(s1, n);
+	cout << s2;
+	cout << printSymbol(s1, h - (2 * n - 1));
+	cout << s2;
+
+	return line;
+}
+
 int main() {
-	int n, i = 1;
+	int i = 1;
 
-	cin >> n;
+	cin >> h;
 
-	for (; i <= n; i++) {
-		cout << printSymbol(' ', n - i);
+	for (; i <= h; i++) {
+		cout << printSymbol(' ', h - i);
 		cout << printSymbol('*', 2 * i - 1);
+		cout << "\n";
+	}
+
+	for (i = 1; i <= h; i++) {
+		if (i > 1 && i < h) {
+			cout << printSymbol2(' ', '*', h - i);
+		} else {
+			cout << printSymbol(' ', h - i);
+			cout << printSymbol('*', 2 * i - 1);
+		}
+
 		cout << "\n";
 	}
 
